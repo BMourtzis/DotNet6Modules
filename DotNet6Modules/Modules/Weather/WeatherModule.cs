@@ -1,4 +1,5 @@
-﻿using DotNet6Modules.Modules.Weather.Services;
+﻿using DotNet6Modules.Modules.Weather.Endpoints;
+using DotNet6Modules.Modules.Weather.Services;
 
 namespace DotNet6Modules.Modules.Weather
 {
@@ -13,10 +14,7 @@ namespace DotNet6Modules.Modules.Weather
 
         public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
         {
-            endpoints.MapGet("/weather", (IWeatherForecastService weatherForecastService) =>
-            {
-                return weatherForecastService.ForecastNextDays(5);
-            });
+            endpoints.MapGet("/weather", GetWeather.Get);
 
             return endpoints;
         }

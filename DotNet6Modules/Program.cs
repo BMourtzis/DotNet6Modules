@@ -20,8 +20,9 @@ app.Run();
 static void ConfigureServices(IServiceCollection services, ConfigurationManager configurationManager)
 {
     // Add services to the container.
-    //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    //    .AddMicrosoftIdentityWebApi(configurationManager.GetSection("AzureAd"));
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddMicrosoftIdentityWebApi(configurationManager.GetSection("AzureAd"));
+    services.AddAuthorization();
 
     //services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -40,8 +41,8 @@ static void Configure(WebApplication app)
 
     app.UseHttpsRedirection();
 
-    //app.UseAuthentication();
-    //app.UseAuthorization();
+    app.UseAuthentication();
+    app.UseAuthorization();
 
     //app.MapControllers();
 }

@@ -37,7 +37,6 @@ namespace DotNet6Modules
         //Manually create the list of Modules you want to register
         private static IEnumerable<IModule> GetModules()
         {
-            
             return new List<Type>()
             {
                 typeof(WeatherModule)
